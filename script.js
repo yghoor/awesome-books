@@ -33,3 +33,20 @@ const bookList = document.getElementById('book-list');
 const bookForm = document.getElementById('add-book');
 
 let books = [];
+
+function displayBooks() {
+  books.forEach((book, bookNum) => {
+    const bookDiv = document.createElement('div');
+    bookDiv.classList.add(`${bookNum}`);
+
+    bookDiv.innerHTML = `
+      <h2></h2>
+      <h3></h3>
+      <button type="button" onmousedown="removeBook(${bookNum})">Remove</button>`;
+
+    bookDiv.children[0].textContent = `${book.title}`;
+    bookDiv.children[1].textContent = `${book.author}`;
+
+    bookList.appendChild(bookDiv);
+  });
+}
