@@ -69,3 +69,7 @@ function addBook() {
   refreshBookList();
 }
 
+function saveBooksToLocalStorage() {
+  localStorage.setItem('books', JSON.stringify(books));
+}
+
