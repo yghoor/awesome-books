@@ -50,3 +50,9 @@ function displayBooks() {
     bookList.appendChild(bookDiv);
   });
 }
+
+function refreshBookList() {
+  bookList.innerHTML = '';
+  displayBooks();
+}
+
