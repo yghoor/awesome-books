@@ -87,3 +87,7 @@ bookForm.addEventListener('submit', (event) => {
   saveBooksToLocalStorage();
 });
 
+if (localStorage.getItem('books')) {
+  books = JSON.parse(localStorage.getItem('books'));
+  displayBooks();
+}
