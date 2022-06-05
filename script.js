@@ -26,3 +26,8 @@ mainPage.innerHTML = `
   </section>`;
 
 pageBody.appendChild(mainPage);
+
+// Add books collection functionality
+
+const bookList = document.getElementById('book-list');
+const bookForm = document.getElementById('add-book');
