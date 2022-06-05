@@ -56,3 +56,16 @@ function refreshBookList() {
   displayBooks();
 }
 
+function addBook() {
+  const currentTitle = bookForm.elements.title.value;
+  const currentAuthor = bookForm.elements.author.value;
+
+  books.push(
+    {
+      title: `${currentTitle}`,
+      author: `${currentAuthor}`,
+    },
+  );
+  refreshBookList();
+}
+
