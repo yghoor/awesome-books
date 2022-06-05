@@ -80,3 +80,10 @@ function removeBook(bookNumber) {
   saveBooksToLocalStorage();
 }
 
+bookForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+  addBook();
+  bookForm.reset();
+  saveBooksToLocalStorage();
+});
+
