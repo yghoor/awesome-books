@@ -31,3 +31,5 @@ pageBody.appendChild(mainPage);
 
 const bookList = document.getElementById('book-list');
 const bookForm = document.getElementById('add-book');
+
+let books = [];
