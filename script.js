@@ -45,9 +45,10 @@ class BookArray {
     this.books.push(book);
   }
 
-function displayBooks() {
-  books.forEach((book, bookNum) => {
-    const bookDiv = document.createElement('div');
+  removeBookFromArray(bookNum) {
+    this.books.splice(bookNum, 1);
+  }
+}
 }
     bookDiv.classList.add(`${bookNum}`);
 
