@@ -70,9 +70,11 @@ function addBookToPage(title, author, bookNum) {
   bookList.appendChild(bookDiv);
 }
 
-function refreshBookList() {
-  bookList.innerHTML = '';
-  displayBooks();
+function displayStoredBooks() {
+  books.forEach((book, bookNum) => {
+    booksObj.createBook(book.title, book.author);
+    addBookToPage(book.title, book.author, bookNum);
+  });
 }
 
 function addBook() {
