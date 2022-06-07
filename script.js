@@ -32,11 +32,17 @@ pageBody.appendChild(mainPage);
 const bookList = document.getElementById('book-list');
 const bookForm = document.getElementById('add-book');
 
+class BookArray {
+  constructor() {
+    this.books = [];
+  }
+
 let books = [];
 
 function displayBooks() {
   books.forEach((book, bookNum) => {
     const bookDiv = document.createElement('div');
+}
     bookDiv.classList.add(`${bookNum}`);
 
     bookDiv.innerHTML = `
