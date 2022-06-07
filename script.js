@@ -49,8 +49,11 @@ class BookArray {
     this.books.splice(bookNum, 1);
   }
 }
-}
-    bookDiv.classList.add(`${bookNum}`);
+
+const booksObj = new BookArray();
+// eslint-disable-next-line prefer-destructuring
+let books = booksObj.books;
+
 
     bookDiv.innerHTML = `
       <h2></h2>
