@@ -37,7 +37,13 @@ class BookArray {
     this.books = [];
   }
 
-let books = [];
+  createBook(title, author) {
+    const book = {
+      title,
+      author,
+    };
+    this.books.push(book);
+  }
 
 function displayBooks() {
   books.forEach((book, bookNum) => {
