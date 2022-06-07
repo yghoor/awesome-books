@@ -54,17 +54,20 @@ const booksObj = new BookArray();
 // eslint-disable-next-line prefer-destructuring
 let books = booksObj.books;
 
+function addBookToPage(title, author, bookNum) {
+  const bookDiv = document.createElement('div');
+  const bookId = bookNum;
+  bookDiv.classList.add(`book-${bookId}`);
 
-    bookDiv.innerHTML = `
-      <h2></h2>
-      <h3></h3>
-      <button type="button" onmousedown="removeBook(${bookNum})">Remove</button>`;
+  bookDiv.innerHTML = `
+    <h2></h2>
+    <h3></h3>
+    <button type="button" onmousedown="removeBook(${bookId})">Remove</button>`;
 
-    bookDiv.children[0].textContent = `${book.title}`;
-    bookDiv.children[1].textContent = `${book.author}`;
+  bookDiv.children[0].textContent = `${title}`;
+  bookDiv.children[1].textContent = `${author}`;
 
-    bookList.appendChild(bookDiv);
-  });
+  bookList.appendChild(bookDiv);
 }
 
 function refreshBookList() {
