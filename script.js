@@ -69,9 +69,10 @@ function addBookToPage(title, author, bookNum) {
   }
 
   bookDiv.innerHTML = `
-    <h2></h2>
-    <h3></h3>
-    <button type="button" onmousedown="removeBook(${bookId})">Remove</button>`;
+  <div class="d-flex flex-row justify-content-between align-items-center py-2 px-3">
+    <h2 class="fs-3 fw-bold"><span></span> by <span></span></h2>
+    <button type="button" class="fs-5 px-3 bg-white" onmousedown="removeBook(${bookId})">Remove</button>
+  </div>`;
 
   bookDiv.children[0].textContent = `${title}`;
   bookDiv.children[1].textContent = `${author}`;
