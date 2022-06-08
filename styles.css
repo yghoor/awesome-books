@@ -2,3 +2,7 @@ button {
   border-color: black;
   border-width: 3px 6px 6px 3px;
 }
+
+.grey-background {
+  background-color: #ddd;
+}
