@@ -89,10 +89,12 @@ function saveBooksToLocalStorage() {
 }
 
 // eslint-disable-next-line no-unused-vars
-function removeBook(bookNumber) {
-  books.splice(bookNumber, 1);
-  refreshBookList();
+function removeBook(bookId) {
+  booksObj.removeBookFromArray(bookId);
   saveBooksToLocalStorage();
+
+  bookList.innerHTML = '';
+  displayCurrentBooks();
 }
 
 bookForm.addEventListener('submit', (event) => {
