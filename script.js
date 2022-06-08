@@ -62,7 +62,11 @@ let books = booksObj.books;
 function addBookToPage(title, author, bookNum) {
   const bookDiv = document.createElement('div');
   const bookId = bookNum;
-  bookDiv.classList.add(`book-${bookId}`);
+  if (bookNum % 2 === 0) {
+    bookDiv.classList.add(`book-${bookId}`, 'grey-background');
+  } else {
+    bookDiv.classList.add(`book-${bookId}`);
+  }
 
   bookDiv.innerHTML = `
     <h2></h2>
