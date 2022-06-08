@@ -99,9 +99,15 @@ function removeBook(bookId) {
 
 bookForm.addEventListener('submit', (event) => {
   event.preventDefault();
-  addBook();
+
+  const currentTitle = bookForm.elements.title.value;
+  const currentAuthor = bookForm.elements.author.value;
+
   bookForm.reset();
+
+  booksObj.createBook(currentTitle, currentAuthor);
   saveBooksToLocalStorage();
+  addBookToPage(currentTitle, currentAuthor, books.length);
 });
 
 if (localStorage.getItem('books')) {
