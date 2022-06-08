@@ -74,8 +74,9 @@ function addBookToPage(title, author, bookNum) {
     <button type="button" class="fs-5 px-3 bg-white" onmousedown="removeBook(${bookId})">Remove</button>
   </div>`;
 
-  bookDiv.children[0].textContent = `${title}`;
-  bookDiv.children[1].textContent = `${author}`;
+  const bookInfo = bookDiv.querySelector('h2');
+  bookInfo.children[0].textContent = `${title}`;
+  bookInfo.children[1].textContent = `${author}`;
 
   bookList.appendChild(bookDiv);
 }
