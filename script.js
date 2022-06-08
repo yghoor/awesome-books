@@ -4,24 +4,29 @@ const pageBody = document.body;
 
 const mainPage = document.createElement('section');
 mainPage.id = 'main-page';
+mainPage.className = 'container d-flex flex-column justify-content-center align-items-center';
 mainPage.innerHTML = `
-  <header>
-    <h1>Awesome Books</h1>
+  <header class="p-3 mb-1">
+    <h1>All awesome books</h1>
   </header>
 
-  <section id="book-list"></section>
+  <section id="book-list" class="container-fluid p-0 d-flex-flex-column rounded-2"></section>
 
-  <section id="form-section">
-    <form method="post" id="add-book">
+  <hr class="opacity-100 m-4">
+    
+  <section id="form-section" class="d-flex flex-column justify-content-center align-items-center">
+    <h2 class="mb-3">Add a new book</h2>
+
+    <form method="post" id="add-book" class="d-flex flex-column gap-3">
       <label>
-        <input type="text" id="title" maxlength="60" placeholder="Title" required />
+        <input type="text" id="title" maxlength="60" placeholder="Title" class="border-4 border-dark rounded-1 fw-bold px-1" required />
       </label>
-
+    
       <label>
-        <input type="text" id="author" maxlength="30" placeholder="Author" required />
+        <input type="text" id="author" maxlength="30" placeholder="Author" class="border-4 border-dark rounded-1 fw-bold px-1" required />
       </label>
-
-      <button type="submit">Add</button>
+    
+      <button type="submit" class="align-self-end bg-white px-3">Add</button>
     </form>
   </section>`;
 
