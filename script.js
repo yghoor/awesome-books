@@ -77,17 +77,10 @@ function displayStoredBooks() {
   });
 }
 
-function addBook() {
-  const currentTitle = bookForm.elements.title.value;
-  const currentAuthor = bookForm.elements.author.value;
-
-  books.push(
-    {
-      title: `${currentTitle}`,
-      author: `${currentAuthor}`,
-    },
-  );
-  refreshBookList();
+function displayCurrentBooks() {
+  books.forEach((book, bookNum) => {
+    addBookToPage(book.title, book.author, bookNum);
+  });
 }
 
 function saveBooksToLocalStorage() {
