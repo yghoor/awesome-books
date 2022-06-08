@@ -113,5 +113,5 @@ bookForm.addEventListener('submit', (event) => {
 
 if (localStorage.getItem('books')) {
   books = JSON.parse(localStorage.getItem('books'));
-  displayBooks();
+  displayStoredBooks();
 }
