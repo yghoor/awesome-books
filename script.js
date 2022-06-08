@@ -84,6 +84,7 @@ function displayCurrentBooks() {
 }
 
 function saveBooksToLocalStorage() {
+  books = booksObj.books;
   localStorage.setItem('books', JSON.stringify(books));
 }
 
