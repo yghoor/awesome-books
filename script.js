@@ -104,6 +104,7 @@ function checkBorder() {
 
 function saveBooksToLocalStorage() {
   books = booksObj.books;
+  checkBorder();
   localStorage.setItem('books', JSON.stringify(books));
 }
 
