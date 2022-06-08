@@ -94,6 +94,14 @@ function displayCurrentBooks() {
   });
 }
 
+function checkBorder() {
+  if (books.length !== 0) {
+    bookList.classList.add('border', 'border-dark', 'border-4');
+  } else {
+    bookList.classList.remove('border', 'border-dark', 'border-4');
+  }
+}
+
 function saveBooksToLocalStorage() {
   books = booksObj.books;
   localStorage.setItem('books', JSON.stringify(books));
