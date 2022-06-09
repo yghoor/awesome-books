@@ -202,8 +202,7 @@ bookForm.addEventListener('submit', (event) => {
 
   booksObj.createBook(currentTitle, currentAuthor);
   saveBooksToLocalStorage();
-  addBookToPage(currentTitle, currentAuthor, books.length);
-  window.location.reload();
+  addBookToPage(currentTitle, currentAuthor, books.length - 1);
 });
 
 if (localStorage.getItem('books')) {
