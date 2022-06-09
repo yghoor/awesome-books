@@ -109,7 +109,6 @@ function saveBooksToLocalStorage() {
   localStorage.setItem('books', JSON.stringify(books));
 }
 
-// eslint-disable-next-line no-unused-vars
 function removeBook(bookId) {
   booksObj.removeBookFromArray(bookId);
   saveBooksToLocalStorage();
