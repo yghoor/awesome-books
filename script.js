@@ -2,20 +2,16 @@
 const pageBody = document.body;
 const dynamicPage = document.getElementById('dynamic-page');
 
-// Create main page elements
+// Display current date and time in page
 
-const mainPage = document.createElement('section');
-mainPage.id = 'main-page';
-mainPage.className = 'container d-flex flex-column justify-content-center align-items-center';
-mainPage.innerHTML = `
-  <header class="p-3 mb-1">
-    <h1>All awesome books</h1>
-  </header>
+const dateAndTime = document.getElementById('date-and-time');
 
-  <section id="book-list" class="container-fluid p-0 d-flex-flex-column rounded-2"></section>
+// eslint-disable-next-line no-undef
+const { DateTime } = luxon;
+const dt = DateTime.now();
 
-  <hr class="opacity-100 m-4">
-    
+dateAndTime.textContent = `${dt.toLocaleString(DateTime.DATETIME_MED)}`;
+
   <section id="form-section" class="d-flex flex-column justify-content-center align-items-center">
     <h2 class="mb-3">Add a new book</h2>
 
