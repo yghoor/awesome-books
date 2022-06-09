@@ -1,3 +1,4 @@
+* eslint-disable no-unused-vars */
 const pageBody = document.body;
 
 // Create main page elements
