@@ -7,6 +7,9 @@ button {
   background-color: #ddd;
 }
 
+input {
+  width: 800px;
+}
 
 footer {
   position: fixed;
