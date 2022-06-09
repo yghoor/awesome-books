@@ -102,8 +102,11 @@ function showContactPage() {
   document.getElementById('contact-page').classList.add('d-flex');
 }
 
+// Create dynamic elements on page load
 
-pageBody.appendChild(mainPage);
+createBooksPage();
+createAddBookForm();
+createContactPage();
 
 // Add books collection functionality
 
