@@ -18,19 +18,26 @@ function hideDynamicElements() {
   if (document.getElementById('books-page').classList.contains('d-flex')) {
     document.getElementById('books-page').classList.remove('d-flex');
     document.getElementById('books-page').classList.add('d-none');
+    document.getElementById('books-page-link').classList.remove('link-primary');
+    document.getElementById('books-page-link').classList.add('link-dark');
   } else if (document.getElementById('form-page').classList.contains('d-flex')) {
     document.getElementById('form-page').classList.remove('d-flex');
     document.getElementById('form-page').classList.add('d-none');
+    document.getElementById('form-page-link').classList.remove('link-primary');
+    document.getElementById('form-page-link').classList.add('link-dark');
   } else if (document.getElementById('contact-page').classList.contains('d-flex')) {
     document.getElementById('contact-page').classList.remove('d-flex');
     document.getElementById('contact-page').classList.add('d-none');
+    document.getElementById('contact-page-link').classList.remove('link-primary');
+    document.getElementById('contact-page-link').classList.add('link-dark');
   }
 }
 
 function createBooksPage() {
   const booksPage = document.createElement('section');
   booksPage.id = 'books-page';
-  booksPage.className = 'container d-flex flex-column justify-content-center align-items-center';
+  booksPage.className =
+    'container d-flex flex-column justify-content-center align-items-center';
   booksPage.innerHTML = `
   <div class="p-3 mt-3 mb-1">
     <h1 class="fw-bold">All awesome books</h1>
@@ -43,6 +50,8 @@ function createBooksPage() {
 
 function showBooksPage() {
   hideDynamicElements();
+  document.getElementById('books-page-link').classList.remove('link-dark');
+  document.getElementById('books-page-link').classList.add('link-primary');
   document.getElementById('books-page').classList.remove('d-none');
   document.getElementById('books-page').classList.add('d-flex');
 }
@@ -71,6 +80,8 @@ function createAddBookForm() {
 
 function showAddBookForm() {
   hideDynamicElements();
+  document.getElementById('form-page-link').classList.remove('link-dark');
+  document.getElementById('form-page-link').classList.add('link-primary');
   document.getElementById('form-page').classList.remove('d-none');
   document.getElementById('form-page').classList.add('d-flex');
 }
@@ -78,7 +89,8 @@ function showAddBookForm() {
 function createContactPage() {
   const contactPage = document.createElement('section');
   contactPage.id = 'contact-page';
-  contactPage.className = 'd-none flex-column justify-content-center align-items-center mt-4 mb-5 pb-5 gap-5';
+  contactPage.className =
+    'd-none flex-column justify-content-center align-items-center mt-4 mb-5 pb-5 gap-5';
   contactPage.innerHTML = `
   <h2 class="fs-1 fw-bold mb-5">Contact Information</h2>
 
@@ -98,6 +110,8 @@ function createContactPage() {
 
 function showContactPage() {
   hideDynamicElements();
+  document.getElementById('contact-page-link').classList.remove('link-dark');
+  document.getElementById('contact-page-link').classList.add('link-primary');
   document.getElementById('contact-page').classList.remove('d-none');
   document.getElementById('contact-page').classList.add('d-flex');
 }
