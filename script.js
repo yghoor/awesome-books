@@ -12,21 +12,96 @@ const dt = DateTime.now();
 
 dateAndTime.textContent = `${dt.toLocaleString(DateTime.DATETIME_MED)}`;
 
-  <section id="form-section" class="d-flex flex-column justify-content-center align-items-center">
-    <h2 class="mb-3">Add a new book</h2>
+// Build functions to hide, create and show dynamic pages
 
-    <form method="post" id="add-book" class="d-flex flex-column gap-3">
-      <label>
-        <input type="text" id="title" maxlength="60" placeholder="Title" class="border-4 border-dark rounded-1 fw-bold px-1" required />
-      </label>
-    
-      <label>
-        <input type="text" id="author" maxlength="30" placeholder="Author" class="border-4 border-dark rounded-1 fw-bold px-1" required />
-      </label>
-    
-      <button type="submit" class="align-self-end bg-white px-3">Add</button>
-    </form>
-  </section>`;
+function hideDynamicElements() {
+  if (document.getElementById('books-page').classList.contains('d-flex')) {
+    document.getElementById('books-page').classList.remove('d-flex');
+    document.getElementById('books-page').classList.add('d-none');
+  } else if (document.getElementById('form-page').classList.contains('d-flex')) {
+    document.getElementById('form-page').classList.remove('d-flex');
+    document.getElementById('form-page').classList.add('d-none');
+  } else if (document.getElementById('contact-page').classList.contains('d-flex')) {
+    document.getElementById('contact-page').classList.remove('d-flex');
+    document.getElementById('contact-page').classList.add('d-none');
+  }
+}
+
+function createBooksPage() {
+  const booksPage = document.createElement('section');
+  booksPage.id = 'books-page';
+  booksPage.className = 'container d-flex flex-column justify-content-center align-items-center';
+  booksPage.innerHTML = `
+  <div class="p-3 mt-3 mb-1">
+    <h1 class="fw-bold">All awesome books</h1>
+  </div>
+
+  <section id="book-list" class="container-fluid p-0 d-flex-flex-column rounded-2"></section>`;
+
+  dynamicPage.appendChild(booksPage);
+}
+
+function showBooksPage() {
+  hideDynamicElements();
+  document.getElementById('books-page').classList.remove('d-none');
+  document.getElementById('books-page').classList.add('d-flex');
+}
+
+function createAddBookForm() {
+  const form = document.createElement('section');
+  form.id = 'form-page';
+  form.className = 'container d-none flex-column align-items-center gap-5 mt-4 mb-5 pb-5';
+  form.innerHTML = `
+  <h2 class="fs-1 fw-bold mb-3">Add a new book</h2>
+
+  <form method="post" id="add-book" class="d-flex flex-column gap-5">
+    <label>
+      <input type="text" id="title" maxlength="60" placeholder="Title" class="border-4 border-dark rounded-3 fs-2 fw-bold px-2" required />
+    </label>
+
+    <label>
+      <input type="text" id="author" maxlength="30" placeholder="Author" class="border-4 border-dark rounded-3 fs-2 fw-bold px-2" required />
+    </label>
+
+    <button type="submit" class="fs-4 align-self-end bg-white px-3">Add</button>
+  </form>`;
+
+  dynamicPage.appendChild(form);
+}
+
+function showAddBookForm() {
+  hideDynamicElements();
+  document.getElementById('form-page').classList.remove('d-none');
+  document.getElementById('form-page').classList.add('d-flex');
+}
+
+function createContactPage() {
+  const contactPage = document.createElement('section');
+  contactPage.id = 'contact-page';
+  contactPage.className = 'd-none flex-column justify-content-center align-items-center mt-4 mb-5 pb-5 gap-5';
+  contactPage.innerHTML = `
+  <h2 class="fs-1 fw-bold mb-5">Contact Information</h2>
+
+  <p class="fs-3 fw-bold">
+    Do you have any questions or you just want to say "Hello"?
+    <br />You can reach out to us!
+  </p>
+
+  <ul class="d-flex flex-column mb-5 pb-5">
+    <li class="fs-3 fw-bold">Our e-mail: mail@mail.com</li>
+    <li class="fs-3 fw-bold">Our phone number: 0043586534422</li>
+    <li class="fs-3 fw-bold">Our address: Streetname 22, 84503, City, Country</li>
+  </ul>`;
+
+  dynamicPage.appendChild(contactPage);
+}
+
+function showContactPage() {
+  hideDynamicElements();
+  document.getElementById('contact-page').classList.remove('d-none');
+  document.getElementById('contact-page').classList.add('d-flex');
+}
+
 
 pageBody.appendChild(mainPage);
 
