@@ -1,4 +1,4 @@
-* eslint-disable no-unused-vars */
+/* eslint-disable no-unused-vars */
 const pageBody = document.body;
 const dynamicPage = document.getElementById('dynamic-page');
 
