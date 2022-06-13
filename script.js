@@ -36,8 +36,7 @@ function hideDynamicElements() {
 function createBooksPage() {
   const booksPage = document.createElement('section');
   booksPage.id = 'books-page';
-  booksPage.className =
-    'container d-flex flex-column justify-content-center align-items-center';
+  booksPage.className = 'container d-flex flex-column justify-content-center align-items-center';
   booksPage.innerHTML = `
   <div class="p-3 mt-3 mb-1">
     <h1 class="fw-bold">All awesome books</h1>
@@ -89,8 +88,7 @@ function showAddBookForm() {
 function createContactPage() {
   const contactPage = document.createElement('section');
   contactPage.id = 'contact-page';
-  contactPage.className =
-    'd-none flex-column justify-content-center align-items-center mt-4 mb-5 pb-5 gap-5';
+  contactPage.className = 'd-none flex-column justify-content-center align-items-center mt-4 mb-5 pb-5 gap-5';
   contactPage.innerHTML = `
   <h2 class="fs-1 fw-bold mb-5">Contact Information</h2>
 
