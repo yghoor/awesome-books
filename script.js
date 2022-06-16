@@ -1,35 +1,36 @@
 /* eslint-disable no-unused-vars */
+
 const pageBody = document.body;
 const dynamicPage = document.getElementById('dynamic-page');
 
-// Display current date and time in page
-
-const dateAndTime = document.getElementById('date-and-time');
+// Get current date and time
 
 // eslint-disable-next-line no-undef
 const { DateTime } = luxon;
 const dt = DateTime.now();
 
-dateAndTime.textContent = `${dt.toLocaleString(DateTime.DATETIME_MED)}`;
-
 // Build functions to hide, create and show dynamic pages
 
+function hidePage(page) {
+  page.classList.remove('d-flex');
+  page.classList.add('d-none');
+}
+
+function unselectLink(link) {
+  link.classList.remove('link-primary');
+  link.classList.add('link-dark');
+}
+
 function hideDynamicElements() {
-  if (document.getElementById('books-page').classList.contains('d-flex')) {
-    document.getElementById('books-page').classList.remove('d-flex');
-    document.getElementById('books-page').classList.add('d-none');
-    document.getElementById('books-page-link').classList.remove('link-primary');
-    document.getElementById('books-page-link').classList.add('link-dark');
-  } else if (document.getElementById('form-page').classList.contains('d-flex')) {
-    document.getElementById('form-page').classList.remove('d-flex');
-    document.getElementById('form-page').classList.add('d-none');
-    document.getElementById('form-page-link').classList.remove('link-primary');
-    document.getElementById('form-page-link').classList.add('link-dark');
-  } else if (document.getElementById('contact-page').classList.contains('d-flex')) {
-    document.getElementById('contact-page').classList.remove('d-flex');
-    document.getElementById('contact-page').classList.add('d-none');
-    document.getElementById('contact-page-link').classList.remove('link-primary');
-    document.getElementById('contact-page-link').classList.add('link-dark');
+  if (booksPage.classList.contains('d-flex')) {
+    hidePage(booksPage);
+    unselectLink(booksPageLink);
+  } else if (formPage.classList.contains('d-flex')) {
+    hidePage(formPage);
+    unselectLink(formPageLink);
+  } else if (contactPage.classList.contains('d-flex')) {
+    hidePage(contactPage);
+    unselectLink(contactPageLink);
   }
 }
 
@@ -49,10 +50,10 @@ function createBooksPage() {
 
 function showBooksPage() {
   hideDynamicElements();
-  document.getElementById('books-page-link').classList.remove('link-dark');
-  document.getElementById('books-page-link').classList.add('link-primary');
-  document.getElementById('books-page').classList.remove('d-none');
-  document.getElementById('books-page').classList.add('d-flex');
+  booksPageLink.classList.remove('link-dark');
+  booksPageLink.classList.add('link-primary');
+  booksPage.classList.remove('d-none');
+  booksPage.classList.add('d-flex');
 }
 
 function createAddBookForm() {
@@ -79,10 +80,10 @@ function createAddBookForm() {
 
 function showAddBookForm() {
   hideDynamicElements();
-  document.getElementById('form-page-link').classList.remove('link-dark');
-  document.getElementById('form-page-link').classList.add('link-primary');
-  document.getElementById('form-page').classList.remove('d-none');
-  document.getElementById('form-page').classList.add('d-flex');
+  formPageLink.classList.remove('link-dark');
+  formPageLink.classList.add('link-primary');
+  formPage.classList.remove('d-none');
+  formPage.classList.add('d-flex');
 }
 
 function createContactPage() {
@@ -108,22 +109,13 @@ function createContactPage() {
 
 function showContactPage() {
   hideDynamicElements();
-  document.getElementById('contact-page-link').classList.remove('link-dark');
-  document.getElementById('contact-page-link').classList.add('link-primary');
-  document.getElementById('contact-page').classList.remove('d-none');
-  document.getElementById('contact-page').classList.add('d-flex');
+  contactPageLink.classList.remove('link-dark');
+  contactPageLink.classList.add('link-primary');
+  contactPage.classList.remove('d-none');
+  contactPage.classList.add('d-flex');
 }
 
-// Create dynamic elements on page load
-
-createBooksPage();
-createAddBookForm();
-createContactPage();
-
 // Add books collection functionality
-
-const bookList = document.getElementById('book-list');
-const bookForm = document.getElementById('add-book');
 
 class BookArray {
   constructor() {
@@ -203,6 +195,24 @@ function removeBook(bookId) {
   bookList.innerHTML = '';
   displayCurrentBooks();
 }
+
+// Create dynamic elements on page load
+
+createBooksPage();
+createAddBookForm();
+createContactPage();
+
+const dateAndTime = document.getElementById('date-and-time');
+const bookList = document.getElementById('book-list');
+const bookForm = document.getElementById('add-book');
+const booksPage = document.getElementById('books-page');
+const booksPageLink = document.getElementById('books-page-link');
+const formPage = document.getElementById('form-page');
+const formPageLink = document.getElementById('form-page-link');
+const contactPage = document.getElementById('contact-page');
+const contactPageLink = document.getElementById('contact-page-link');
+
+dateAndTime.textContent = `${dt.toLocaleString(DateTime.DATETIME_MED)}`;
 
 bookForm.addEventListener('submit', (event) => {
   event.preventDefault();
