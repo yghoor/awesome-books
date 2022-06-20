@@ -51,8 +51,6 @@ class BookArray {
 }
 
 const booksObj = new BookArray();
-// eslint-disable-next-line prefer-destructuring
-let books = booksObj.books;
 
 function addBookToPage(title, author, bookNum) {
   const bookDiv = document.createElement('div');
@@ -71,25 +69,24 @@ function addBookToPage(title, author, bookNum) {
 }
 
 function displayStoredBooks() {
-  books.forEach((book, bookNum) => {
-    booksObj.createBook(book.title, book.author);
+  booksObj.books.forEach((book, bookNum) => {
     addBookToPage(book.title, book.author, bookNum);
   });
 }
 
 function displayCurrentBooks() {
-  books.forEach((book, bookNum) => {
+  booksObj.books.forEach((book, bookNum) => {
     addBookToPage(book.title, book.author, bookNum);
   });
 }
 
 function saveBooksToLocalStorage() {
-  books = booksObj.books;
-  localStorage.setItem('books', JSON.stringify(books));
+  localStorage.setItem('books', JSON.stringify(booksObj.books));
 }
 
 // eslint-disable-next-line no-unused-vars
 function removeBook(bookId) {
+  console.log(bookId);
   booksObj.removeBookFromArray(bookId);
   saveBooksToLocalStorage();
 
@@ -107,11 +104,11 @@ bookForm.addEventListener('submit', (event) => {
 
   booksObj.createBook(currentTitle, currentAuthor);
   saveBooksToLocalStorage();
-  addBookToPage(currentTitle, currentAuthor, books.length);
+  addBookToPage(currentTitle, currentAuthor, booksObj.books.length);
   window.location.reload();
 });
 
 if (localStorage.getItem('books')) {
-  books = JSON.parse(localStorage.getItem('books'));
+  booksObj.books = JSON.parse(localStorage.getItem('books'));
   displayStoredBooks();
 }
