@@ -68,13 +68,7 @@ function addBookToPage(title, author, bookNum) {
   bookList.appendChild(bookDiv);
 }
 
-function displayStoredBooks() {
-  booksObj.books.forEach((book, bookNum) => {
-    addBookToPage(book.title, book.author, bookNum);
-  });
-}
-
-function displayCurrentBooks() {
+function displayBooks() {
   booksObj.books.forEach((book, bookNum) => {
     addBookToPage(book.title, book.author, bookNum);
   });
@@ -90,7 +84,7 @@ function removeBook(bookId) {
   saveBooksToLocalStorage();
 
   bookList.innerHTML = '';
-  displayCurrentBooks();
+  displayBooks();
 }
 
 bookForm.addEventListener('submit', (event) => {
@@ -109,5 +103,5 @@ bookForm.addEventListener('submit', (event) => {
 
 if (localStorage.getItem('books')) {
   booksObj.books = JSON.parse(localStorage.getItem('books'));
-  displayStoredBooks();
+  displayBooks();
 }
