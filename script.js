@@ -136,8 +136,6 @@ class BookArray {
 }
 
 const booksObj = new BookArray();
-// eslint-disable-next-line prefer-destructuring
-let books = booksObj.books;
 
 function addBookToPage(title, author, bookNum) {
   const bookDiv = document.createElement('div');
@@ -161,21 +159,14 @@ function addBookToPage(title, author, bookNum) {
   bookList.appendChild(bookDiv);
 }
 
-function displayStoredBooks() {
-  books.forEach((book, bookNum) => {
-    booksObj.createBook(book.title, book.author);
-    addBookToPage(book.title, book.author, bookNum);
-  });
-}
-
-function displayCurrentBooks() {
-  books.forEach((book, bookNum) => {
+function displayBooks() {
+  booksObj.books.forEach((book, bookNum) => {
     addBookToPage(book.title, book.author, bookNum);
   });
 }
 
 function checkBorder() {
-  if (books.length !== 0) {
+  if (booksObj.books.length !== 0) {
     bookList.classList.add('border', 'border-dark', 'border-4');
   } else {
     bookList.classList.remove('border', 'border-dark', 'border-4');
@@ -183,9 +174,8 @@ function checkBorder() {
 }
 
 function saveBooksToLocalStorage() {
-  books = booksObj.books;
   checkBorder();
-  localStorage.setItem('books', JSON.stringify(books));
+  localStorage.setItem('books', JSON.stringify(booksObj.books));
 }
 
 function removeBook(bookId) {
@@ -193,7 +183,7 @@ function removeBook(bookId) {
   saveBooksToLocalStorage();
 
   bookList.innerHTML = '';
-  displayCurrentBooks();
+  displayBooks();
 }
 
 // Create dynamic elements on page load
@@ -224,11 +214,12 @@ bookForm.addEventListener('submit', (event) => {
 
   booksObj.createBook(currentTitle, currentAuthor);
   saveBooksToLocalStorage();
-  addBookToPage(currentTitle, currentAuthor, books.length - 1);
+  addBookToPage(currentTitle, currentAuthor, booksObj.books.length);
+  window.location.reload();
 });
 
 if (localStorage.getItem('books')) {
-  books = JSON.parse(localStorage.getItem('books'));
+  booksObj.books = JSON.parse(localStorage.getItem('books'));
   checkBorder();
-  displayStoredBooks();
+  displayBooks();
 }
