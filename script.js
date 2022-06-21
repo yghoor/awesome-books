@@ -86,7 +86,7 @@ function displayBooks() {
 }
 
 function checkBorder() {
-  if (books.length !== 0) {
+  if (booksObj.books.length !== 0) {
     bookList.classList.add('border', 'border-dark', 'border-4');
   } else {
     bookList.classList.remove('border', 'border-dark', 'border-4');
@@ -94,6 +94,7 @@ function checkBorder() {
 }
 
 function saveBooksToLocalStorage() {
+  checkBorder();
   localStorage.setItem('books', JSON.stringify(booksObj.books));
 }
 
@@ -122,5 +123,6 @@ bookForm.addEventListener('submit', (event) => {
 
 if (localStorage.getItem('books')) {
   booksObj.books = JSON.parse(localStorage.getItem('books'));
+  checkBorder();
   displayBooks();
 }
