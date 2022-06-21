@@ -4,24 +4,29 @@ const pageBody = document.body;
 
 const mainPage = document.createElement('section');
 mainPage.id = 'main-page';
+mainPage.className = 'container d-flex flex-column justify-content-center align-items-center';
 mainPage.innerHTML = `
-  <header>
-    <h1>Awesome Books</h1>
+  <header class="p-3 mb-1">
+    <h1>All awesome books</h1>
   </header>
 
-  <section id="book-list"></section>
+  <section id="book-list" class="container-fluid p-0 d-flex-flex-column rounded-2"></section>
 
-  <section id="form-section">
-    <form method="post" id="add-book">
+  <hr class="opacity-100 m-4">
+    
+  <section id="form-section" class="d-flex flex-column justify-content-center align-items-center">
+    <h2 class="mb-3">Add a new book</h2>
+
+    <form method="post" id="add-book" class="d-flex flex-column gap-3">
       <label>
-        <input type="text" id="title" maxlength="60" placeholder="Title" required />
+        <input type="text" id="title" maxlength="60" placeholder="Title" class="border-4 border-dark rounded-1 fw-bold px-1" required />
       </label>
-
+    
       <label>
-        <input type="text" id="author" maxlength="30" placeholder="Author" required />
+        <input type="text" id="author" maxlength="30" placeholder="Author" class="border-4 border-dark rounded-1 fw-bold px-1" required />
       </label>
-
-      <button type="submit">Add</button>
+    
+      <button type="submit" class="align-self-end bg-white px-3">Add</button>
     </form>
   </section>`;
 
@@ -55,15 +60,21 @@ const booksObj = new BookArray();
 function addBookToPage(title, author, bookNum) {
   const bookDiv = document.createElement('div');
   const bookId = bookNum;
-  bookDiv.classList.add(`book-${bookId}`);
+  if (bookNum % 2 === 0) {
+    bookDiv.classList.add(`book-${bookId}`, 'grey-background');
+  } else {
+    bookDiv.classList.add(`book-${bookId}`);
+  }
 
   bookDiv.innerHTML = `
-    <h2></h2>
-    <h3></h3>
-    <button type="button" onmousedown="removeBook(${bookId})">Remove</button>`;
+  <div class="d-flex flex-row justify-content-between align-items-center py-2 px-3">
+    <h2 class="fs-3 fw-bold"><span></span> by <span></span></h2>
+    <button type="button" class="fs-5 px-3 bg-white" onmousedown="removeBook(${bookId})">Remove</button>
+  </div>`;
 
-  bookDiv.children[0].textContent = `${title}`;
-  bookDiv.children[1].textContent = `${author}`;
+  const bookInfo = bookDiv.querySelector('h2');
+  bookInfo.children[0].textContent = `${title}`;
+  bookInfo.children[1].textContent = `${author}`;
 
   bookList.appendChild(bookDiv);
 }
@@ -74,7 +85,16 @@ function displayBooks() {
   });
 }
 
+function checkBorder() {
+  if (booksObj.books.length !== 0) {
+    bookList.classList.add('border', 'border-dark', 'border-4');
+  } else {
+    bookList.classList.remove('border', 'border-dark', 'border-4');
+  }
+}
+
 function saveBooksToLocalStorage() {
+  checkBorder();
   localStorage.setItem('books', JSON.stringify(booksObj.books));
 }
 
@@ -103,5 +123,6 @@ bookForm.addEventListener('submit', (event) => {
 
 if (localStorage.getItem('books')) {
   booksObj.books = JSON.parse(localStorage.getItem('books'));
+  checkBorder();
   displayBooks();
 }
