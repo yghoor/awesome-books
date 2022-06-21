@@ -86,7 +86,6 @@ function saveBooksToLocalStorage() {
 
 // eslint-disable-next-line no-unused-vars
 function removeBook(bookId) {
-  console.log(bookId);
   booksObj.removeBookFromArray(bookId);
   saveBooksToLocalStorage();
 
